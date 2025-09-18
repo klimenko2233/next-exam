@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { IGenre } from "@/models/IGenre";
-import {UserInfo} from "@/components /UserInfo";
+import {UserInfo} from "@/components /user-info/UserInfo";
 
 interface ISearchForm {
     query: string;
@@ -27,6 +27,7 @@ export default function Header({ genres }: { genres: IGenre[] }) {
     const watchedGenre = watch("genre");
 
     useEffect(() => {
+
         const params = new URLSearchParams(searchParams.toString());
 
         if (watchedQuery) {
@@ -43,6 +44,7 @@ export default function Header({ genres }: { genres: IGenre[] }) {
 
         params.set("page", "1");
         router.push(`/?${params.toString()}`);
+
     }, [watchedQuery, watchedGenre, router]);
 
     const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -54,7 +56,7 @@ export default function Header({ genres }: { genres: IGenre[] }) {
     return (
         <header className="flex flex-col md:flex-row justify-between items-center p-6 bg-slate-800 text-slate-100 sticky top-0 z-50 shadow-lg gap-4">
             <Link
-                href="/"
+                href="/public"
                 onClick={handleLogoClick}
                 className="text-2xl font-bold text-indigo-400 hover:text-indigo-300"
             >

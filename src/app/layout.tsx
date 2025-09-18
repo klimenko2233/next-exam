@@ -1,7 +1,7 @@
 import "./globals.css";
-import type { ReactNode } from "react";
-import { getGenres } from "@/lib/tmdb";
-import Header from "@/components /Header";
+import {ReactNode, Suspense} from "react";
+import { getGenres } from "@/services/tmdb";
+import Header from "@/components /header/Header";
 import {IGenre} from "@/models/IGenre";
 import {Metadata} from "next";
 
@@ -22,8 +22,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     return (
         <html lang="en">
         <body className="min-h-screen bg-slate-900 text-slate-100">
-        <Header genres={genres} />
-
+        <Suspense fallback={<div>Loading header...</div>}>
+            <Header genres={genres} />
+        </Suspense>
         <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {children}
         </main>

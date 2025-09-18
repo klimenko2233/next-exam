@@ -1,4 +1,4 @@
-import { getMovies, getGenres } from "@/lib/tmdb";
+import { getMovies, getGenres } from "@/services/tmdb";
 import {MoviesList} from "@/components /MoviesList";
 import Pagination from "@/components /Pagination";
 

@@ -1,6 +1,7 @@
-import { getGenres, getMovieDetails } from "@/lib/tmdb";
+import { getGenres, getMovieDetails } from "@/services/tmdb";
 import Link from "next/link";
-import MovieInfo from "@/components /MovieInfo";
+import MovieInfo from "@/components /movie-info/MovieInfo";
+import Image from "next/image";
 
 interface MovieDetailsPageProps {
     params: Promise<{ id: string }>;
@@ -22,15 +23,18 @@ export default async function MovieDetailsPage({ params, searchParams }: MovieDe
     return (
         <div className="grid md:grid-cols-3 gap-6">
             <div className="md:col-span-1">
-                <img
-                    src={
-                        movie.poster_path
-                            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                            : "/no-poster.png"
-                    }
-                    alt={movie.title}
-                    className="rounded-xl shadow"
-                />
+                <div className="relative w-full h-[600px] rounded-xl overflow-hidden shadow"> {/* контейнер для fill */}
+                    <Image
+                        src={
+                            movie.poster_path
+                                ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                                : "/no-poster.png"
+                        }
+                        alt={movie.title}
+                        fill
+                        className="object-cover"
+                    />
+                </div>
                 <Link href={backHref} className="inline-block mt-4 text-indigo-400 hover:underline">
                     ← Back to Movies
                 </Link>
@@ -42,5 +46,6 @@ export default async function MovieDetailsPage({ params, searchParams }: MovieDe
         </div>
     );
 }
+
 
 

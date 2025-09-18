@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
+const nextConfig = {
+    images: {
+        domains: ['image.tmdb.org'],
+    },
+    outputFileTracingRoot: __dirname,
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+export default nextConfig
 
-export default nextConfig;

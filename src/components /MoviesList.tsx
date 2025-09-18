@@ -1,4 +1,4 @@
-import { MovieCard } from "./MovieCard";
+import { MovieCard } from "./movie-card/MovieCard";
 import {IMovie} from "@/models/IMovie";
 import {IGenre} from "@/models/IGenre";
 

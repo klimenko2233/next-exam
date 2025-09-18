@@ -7,7 +7,7 @@ import {Metadata} from "next";
 
 export const metadata:Metadata = {
     title: "The Movies App",
-    description: "Browse popular movies — Next + TMDB",
+    description: "Browse popular movie — Next + TMDB",
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {

@@ -1,4 +1,4 @@
-import { IMovieResponse } from "@/models/IMovie";
+import {IMovie, IMovieResponse} from "@/models/IMovie";
 
 const TMDB_TOKEN = process.env.TMDB_TOKEN;
 
@@ -23,7 +23,7 @@ export async function getMovies(
     if (!res.ok) {
         const text = await res.text();
         console.error("TMDB fetch error:", text);
-        throw new Error("Failed to fetch movies from TMDB");
+        throw new Error("Failed to fetch movie from TMDB");
     }
 
     return res.json();
@@ -40,4 +40,14 @@ export async function getGenres(): Promise<{ id: number; name: string }[]> {
     return data.genres;
 }
 
+export async function getMovieDetails(id: number): Promise<IMovie> {
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+        { headers });
+    if (!res.ok) {
+        const text = await res.text();
+        console.error("TMDB fetch movie details error:", text);
+        throw new Error("Failed to fetch movie details from TMDB");
+    }
+    return res.json();
+}
 

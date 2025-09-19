@@ -24,7 +24,7 @@ export const MovieCard = ({ movie, genres }: MovieCardProps) => {
             href={`/movie/${movie.id}?${searchParams.toString()}`}
             className="block bg-slate-800 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
         >
-            <div className="relative w-full h-80"> {/* контейнер для fill */}
+            <div className="relative w-full h-80">
                 <Image
                     src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                     alt={movie.title}
